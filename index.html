@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildWithMohit.in — Web Development Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#060608;--bg2:#0d0d12;--bg3:#13131a;--bg4:#1a1a24;
+  --accent:#ff6b35;--accent2:#ff8c5a;--accent-soft:rgba(255,107,53,0.12);
+  --blue:#4f9eff;--blue-soft:rgba(79,158,255,0.1);
+  --green:#2ecc71;--green-soft:rgba(46,204,113,0.1);
+  --text:#f2f0eb;--muted:#6b6b7a;--muted2:#9090a0;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Cabinet Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-size:16px;line-height:1.7;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5vw;background:rgba(6,6,8,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:0.7;}}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted2);text-decoration:none;font-size:0.88rem;font-weight:400;transition:color 0.2s;letter-spacing:0.2px;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-store-btn{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(255,107,53,0.25);padding:0.45rem 1rem;border-radius:6px;font-size:0.82rem;font-weight:500;text-decoration:none;transition:all 0.2s;}
+.nav-store-btn:hover{background:var(--accent);color:#fff;}
+.nav-hire-btn{background:var(--accent);color:#fff;padding:0.45rem 1.1rem;border-radius:6px;font-size:0.82rem;font-weight:600;text-decoration:none;font-family:'Clash Display',sans-serif;transition:all 0.2s;}
+.nav-hire-btn:hover{background:var(--accent2);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 5vw 5rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0;}
+.hero-orb1{position:absolute;top:-10%;right:-5%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,0.08) 0%,transparent 70%);animation:float1 8s ease-in-out infinite;}
+.hero-orb2{position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(79,158,255,0.06) 0%,transparent 70%);animation:float2 10s ease-in-out infinite;}
+@keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(-20px,20px);}}
+@keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-20px);}}
+.hero-inner{position:relative;z-index:1;max-width:900px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border:1px solid rgba(255,107,53,0.2);color:var(--accent);font-size:0.78rem;font-weight:500;padding:0.38rem 0.9rem;border-radius:100px;margin-bottom:2rem;letter-spacing:0.3px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite;}
+.hero h1{font-family:'Clash Display',sans-serif;font-size:clamp(3rem,7.5vw,6rem);font-weight:700;line-height:1.0;letter-spacing:-2.5px;margin-bottom:1.8rem;}
+.hero h1 .line2{color:var(--accent);}
+.hero h1 .line3{color:var(--muted2);}
+.hero-desc{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--muted2);max-width:540px;margin-bottom:2.8rem;font-weight:300;line-height:1.9;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:5rem;}
+.btn-orange{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:8px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;border:none;cursor:pointer;}
+.btn-orange:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--text);padding:0.85rem 2rem;border-radius:8px;border:1px solid var(--border2);font-family:'Clash Display',sans-serif;font-weight:500;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.3);transform:translateY(-2px);}
+.hero-strip{display:flex;gap:2.5rem;padding-top:3rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.strip-item{display:flex;flex-direction:column;}
+.strip-num{font-family:'Clash Display',sans-serif;font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1;}
+.strip-label{font-size:0.78rem;color:var(--muted);margin-top:4px;letter-spacing:0.3px;}
+
+/* SECTION COMMON */
+section{padding:6rem 5vw;}
+.s-label{font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:4px;color:var(--accent);margin-bottom:0.8rem;}
+.s-title{font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin-bottom:0.8rem;}
+.s-sub{color:var(--muted2);font-size:0.97rem;max-width:480px;margin-bottom:3.5rem;font-weight:300;line-height:1.8;}
+
+/* PACKAGES / STORE */
+#store{background:var(--bg2);}
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:4rem;}
+.pkg-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;transition:all 0.25s;overflow:hidden;}
+.pkg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);}
+.pkg-card.popular::before{background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.pkg-card.popular{border-color:rgba(255,107,53,0.25);}
+.pkg-card:hover{transform:translateY(-4px);border-color:var(--border2);}
+.pkg-popular-badge{display:inline-block;background:var(--accent);color:#fff;font-size:0.7rem;font-weight:600;padding:0.22rem 0.7rem;border-radius:4px;margin-bottom:1.2rem;font-family:'Clash Display',sans-serif;letter-spacing:0.5px;}
+.pkg-name{font-family:'Clash Display',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;color:var(--text);}
+.pkg-desc{font-size:0.83rem;color:var(--muted2);margin-bottom:1.5rem;line-height:1.7;}
+.pkg-price{display:flex;align-items:baseline;gap:6px;margin-bottom:1.5rem;}
+.pkg-price .amount{font-family:'Clash Display',sans-serif;font-size:2.4rem;font-weight:700;color:var(--text);}
+.pkg-price .currency{font-size:1.1rem;color:var(--muted2);font-weight:400;}
+.pkg-price .period{font-size:0.82rem;color:var(--muted);margin-left:2px;}
+.pkg-features{list-style:none;margin-bottom:2rem;}
+.pkg-features li{font-size:0.85rem;color:var(--muted2);padding:0.4rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.pkg-features li:last-child{border-bottom:none;}
+.pkg-features li::before{content:'✓';color:var(--green);font-weight:700;font-size:0.8rem;flex-shrink:0;}
+.pkg-buy-btn{width:100%;background:var(--bg4);color:var(--text);border:1px solid var(--border2);padding:0.75rem;border-radius:8px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.pkg-card.popular .pkg-buy-btn{background:var(--accent);color:#fff;border-color:var(--accent);}
+.pkg-buy-btn:hover{transform:translateY(-1px);}
+.pkg-card:not(.popular) .pkg-buy-btn:hover{background:var(--bg4);border-color:rgba(255,255,255,0.3);}
+
+/* INSTANT PRODUCTS */
+.instant-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;}
+.instant-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all 0.2s;cursor:pointer;}
+.instant-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.instant-icon{font-size:2rem;margin-bottom:1rem;display:block;}
+.instant-card h4{font-family:'Clash Display',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem;}
+.instant-card p{font-size:0.82rem;color:var(--muted2);line-height:1.7;margin-bottom:1rem;}
+.instant-price{display:flex;justify-content:space-between;align-items:center;}
+.instant-amount{font-family:'Clash Display',sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent);}
+.instant-btn{font-size:0.78rem;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(255,107,53,0.2);padding:0.3rem 0.8rem;border-radius:5px;cursor:pointer;font-weight:500;transition:all 0.2s;}
+.instant-btn:hover{background:var(--accent);color:#fff;}
+
+/* PAYMENT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-header{padding:1.8rem 2rem 1rem;border-bottom:1px solid var(--border);}
+.modal-header h3{font-family:'Clash Display',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;}
+.modal-header p{font-size:0.85rem;color:var(--muted2);}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:var(--bg4);border:1px solid var(--border);color:var(--muted2);width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-close:hover{color:var(--text);border-color:var(--border2);}
+.modal-body{padding:1.5rem 2rem;}
+.modal-price-row{display:flex;justify-content:space-between;align-items:center;background:var(--bg3);border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.5rem;border:1px solid var(--border);}
+.modal-price-label{font-size:0.85rem;color:var(--muted2);}
+.modal-price-amount{font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:700;color:var(--accent);}
+.form-field{margin-bottom:1rem;}
+.form-field label{display:block;font-size:0.78rem;color:var(--muted2);margin-bottom:0.4rem;font-weight:500;letter-spacing:0.3px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.9rem;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:rgba(255,107,53,0.4);}
+.form-field select option{background:var(--bg2);}
+.form-field textarea{resize:vertical;min-height:80px;}
+.payment-methods{margin-bottom:1.5rem;}
+.payment-methods label{font-size:0.78rem;color:var(--muted2);font-weight:500;letter-spacing:0.3px;display:block;margin-bottom:0.8rem;}
+.pay-options{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+.pay-option{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.85rem;cursor:pointer;transition:all 0.2s;text-align:center;}
+.pay-option.selected{border-color:var(--accent);background:var(--accent-soft);}
+.pay-option:hover{border-color:var(--border2);}
+.pay-option-name{font-size:0.85rem;font-weight:600;color:var(--text);display:block;margin-top:4px;}
+.pay-option-sub{font-size:0.72rem;color:var(--muted);display:block;}
+.pay-icon{font-size:1.4rem;}
+.modal-pay-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:0.9rem;border-radius:8px;font-family:'Clash Display',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.modal-pay-btn:hover{background:var(--accent2);}
+.secure-note{text-align:center;margin-top:0.8rem;font-size:0.76rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px;}
+.modal-success{display:none;padding:2.5rem 2rem;text-align:center;}
+.modal-success .success-icon{font-size:3.5rem;display:block;margin-bottom:1rem;}
+.modal-success h3{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:0.7rem;}
+.modal-success p{font-size:0.88rem;color:var(--muted2);line-height:1.8;}
+
+/* SERVICES */
+#services{background:var(--bg);}
+.services-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.svc-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all 0.2s;}
+.svc-card:hover{border-color:var(--border2);transform:translateY(-3px);}
+.svc-num{font-family:'Clash Display',sans-serif;font-size:0.75rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:1rem;}
+.svc-icon{font-size:1.8rem;margin-bottom:0.8rem;display:block;}
+.svc-card h3{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:0.5rem;}
+.svc-card p{font-size:0.85rem;color:var(--muted2);line-height:1.7;}
+.svc-tag{display:inline-block;margin-top:1rem;font-size:0.75rem;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(255,107,53,0.2);padding:0.2rem 0.6rem;border-radius:4px;}
+
+/* WORK */
+#work{background:var(--bg2);}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.work-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;}
+.work-card:hover{border-color:var(--border2);transform:translateY(-3px);}
+.work-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;}
+.work-thumb.t1{background:linear-gradient(135deg,#0f1a0a,#1a2d0f);}
+.work-thumb.t2{background:linear-gradient(135deg,#0a0f1f,#0f1a30);}
+.work-thumb.t3{background:linear-gradient(135deg,#1a0a0a,#2d0f0f);}
+.work-body{padding:1.5rem;}
+.work-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+.work-tag{font-size:0.72rem;background:rgba(255,255,255,0.05);color:var(--muted2);padding:0.18rem 0.55rem;border-radius:4px;border:1px solid var(--border);}
+.work-body h3{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:0.5rem;}
+.work-body p{font-size:0.85rem;color:var(--muted2);line-height:1.7;}
+
+/* WHY */
+#why{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;}
+.why-card{padding:1.5rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);transition:border-color 0.2s;}
+.why-card:hover{border-color:var(--border2);}
+.why-card h4{font-family:'Clash Display',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.why-card p{font-size:0.83rem;color:var(--muted2);line-height:1.7;}
+
+/* CONTACT */
+#contact{background:var(--bg2);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start;}
+.contact-left h3{font-family:'Clash Display',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-0.5px;margin-bottom:1rem;line-height:1.15;}
+.contact-left p{color:var(--muted2);font-size:0.92rem;margin-bottom:2rem;font-weight:300;line-height:1.8;}
+.contact-item{display:flex;align-items:flex-start;gap:0.9rem;padding:1rem 1.1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px;margin-bottom:0.8rem;}
+.contact-item-icon{font-size:1rem;margin-top:2px;flex-shrink:0;}
+.contact-item strong{display:block;font-size:0.88rem;font-weight:500;color:var(--text);margin-bottom:2px;}
+.contact-item span{font-size:0.8rem;color:var(--muted);}
+.contact-form-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:2rem;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cf-field{margin-bottom:1rem;}
+.cf-field label{display:block;font-size:0.77rem;color:var(--muted2);margin-bottom:0.4rem;font-weight:500;letter-spacing:0.3px;}
+.cf-field input,.cf-field select,.cf-field textarea{width:100%;background:var(--bg4);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.9rem;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:rgba(255,107,53,0.4);}
+.cf-field select option{background:var(--bg2);}
+.cf-field textarea{resize:vertical;min-height:110px;}
+.cf-submit{background:var(--accent);color:#fff;border:none;padding:0.85rem 2rem;border-radius:8px;font-family:'Clash Display',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.cf-submit:hover{background:var(--accent2);transform:translateY(-1px);}
+.cf-success{display:none;background:var(--green-soft);border:1px solid rgba(46,204,113,0.25);border-radius:8px;padding:1rem 1.2rem;color:var(--green);font-size:0.88rem;margin-top:1rem;}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 5vw;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:'Clash Display',sans-serif;font-size:1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;}
+.footer-brand span{color:var(--accent);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-copy{font-size:0.78rem;color:var(--muted);width:100%;text-align:center;margin-top:1rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+
+@media(max-width:700px){
+  nav{padding:1rem 5vw;}
+  .nav-links{display:none;}
+  .hero-strip{gap:1.5rem;}
+  .contact-wrap{grid-template-columns:1fr;gap:2rem;}
+  .cf-row{grid-template-columns:1fr;}
+  section{padding:4rem 5vw;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo"><span class="logo-dot"></span>BuildWithMohit<span style="color:var(--accent);">.in</span></a>
+  <ul class="nav-links">
+    <li><a href="#store">Store</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#why">Why me</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#store" class="nav-store-btn">Buy a website →</a>
+    <a href="#contact" class="nav-hire-btn">Hire me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"><div class="hero-orb1"></div><div class="hero-orb2"></div></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="badge-dot"></span>Open for projects — 2 slots available</div>
+    <h1>
+      Your website,<br>
+      <span class="line2">built right.</span><br>
+      <span class="line3">Delivered fast.</span>
+    </h1>
+    <p class="hero-desc">Full-stack developer building clean, fast, mobile-ready websites for small businesses and startups. Buy a ready package instantly — or let's build something custom together.</p>
+    <div class="hero-actions">
+      <a href="#store" class="btn-orange">Browse packages →</a>
+      <a href="#contact" class="btn-ghost">Talk to me first</a>
+    </div>
+    <div class="hero-strip">
+      <div class="strip-item"><span class="strip-num">48hr</span><span class="strip-label">Fastest delivery</span></div>
+      <div class="strip-item"><span class="strip-num">4</span><span class="strip-label">Service packages</span></div>
+      <div class="strip-item"><span class="strip-num">24hr</span><span class="strip-label">Response guarantee</span></div>
+      <div class="strip-item"><span class="strip-num">100%</span><span class="strip-label">Mobile-ready builds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORE — PACKAGES -->
+<section id="store">
+  <p class="s-label">Store — Buy instantly</p>
+  <h2 class="s-title">Pick a package. Pay. Done.</h2>
+  <p class="s-sub">No back-and-forth. Choose a package, pay with Razorpay or PayPal, and I'll deliver to your inbox.</p>
+
+  <div class="packages-grid">
+    <!-- Starter -->
+    <div class="pkg-card">
+      <div class="pkg-name">Starter</div>
+      <div class="pkg-desc">Perfect for a simple online presence. Clean, fast, mobile-ready.</div>
+      <div class="pkg-price"><span class="currency">₹</span><span class="amount">3,999</span><span class="period">one-time</span></div>
+      <ul class="pkg-features">
+        <li>3-page website (Home, About, Contact)</li>
+        <li>Mobile responsive design</li>
+        <li>Contact form included</li>
+        <li>Delivered in 5–7 days</li>
+        <li>1 round of revisions</li>
+        <li>Source code included</li>
+      </ul>
+      <button class="pkg-buy-btn" onclick="openModal('Starter Package','₹3,999')">Buy now — ₹3,999</button>
+    </div>
+
+    <!-- Pro -->
+    <div class="pkg-card popular">
+      <div class="pkg-popular-badge">MOST POPULAR</div>
+      <div class="pkg-name">Pro</div>
+      <div class="pkg-desc">For businesses that need a real web presence with a custom design and more pages.</div>
+      <div class="pkg-price"><span class="currency">₹</span><span class="amount">8,999</span><span class="period">one-time</span></div>
+      <ul class="pkg-features">
+        <li>Up to 6 pages</li>
+        <li>Custom UI design</li>
+        <li>SEO basics included</li>
+        <li>WhatsApp/chat integration</li>
+        <li>Delivered in 7–10 days</li>
+        <li>3 rounds of revisions</li>
+        <li>Source code + deployment help</li>
+      </ul>
+      <button class="pkg-buy-btn" onclick="openModal('Pro Package','₹8,999')">Buy now — ₹8,999</button>
+    </div>
+
+    <!-- Premium -->
+    <div class="pkg-card">
+      <div class="pkg-name">Premium</div>
+      <div class="pkg-desc">Full-stack web app or e-commerce store. Built for growth, not just presence.</div>
+      <div class="pkg-price"><span class="currency">₹</span><span class="amount">19,999</span><span class="period">one-time</span></div>
+      <ul class="pkg-features">
+        <li>Unlimited pages</li>
+        <li>Full MERN stack app</li>
+        <li>User login / dashboard</li>
+        <li>Payment gateway integration</li>
+        <li>Delivered in 14–21 days</li>
+        <li>Unlimited revisions</li>
+        <li>1 month free support</li>
+      </ul>
+      <button class="pkg-buy-btn" onclick="openModal('Premium Package','₹19,999')">Buy now — ₹19,999</button>
+    </div>
+  </div>
+
+  <!-- Instant products -->
+  <p class="s-label" style="margin-top:1rem;">Quick buys</p>
+  <h3 class="s-title" style="font-size:1.6rem;">Instant products</h3>
+  <p class="s-sub" style="margin-bottom:2rem;">Pay → receive in your inbox within 48 hours (or instantly for templates).</p>
+  <div class="instant-grid">
+    <div class="instant-card">
+      <span class="instant-icon">⚡</span>
+      <h4>1-Page Landing Site</h4>
+      <p>Product launch, event, or promo page. Designed and delivered within 48 hours of payment.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹1,999</span>
+        <button class="instant-btn" onclick="openModal('1-Page Landing Site','₹1,999')">Buy now</button>
+      </div>
+    </div>
+    <div class="instant-card">
+      <span class="instant-icon">📦</span>
+      <h4>Restaurant Template</h4>
+      <p>Pre-built responsive restaurant/café website template. Zip file delivered instantly after payment.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹799</span>
+        <button class="instant-btn" onclick="openModal('Restaurant Template','₹799')">Buy now</button>
+      </div>
+    </div>
+    <div class="instant-card">
+      <span class="instant-icon">🎨</span>
+      <h4>Portfolio Template</h4>
+      <p>Clean developer/designer portfolio template. Fully editable HTML/CSS/JS zip. Instant download.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹599</span>
+        <button class="instant-btn" onclick="openModal('Portfolio Template','₹599')">Buy now</button>
+      </div>
+    </div>
+    <div class="instant-card">
+      <span class="instant-icon">🌐</span>
+      <h4>Domain + Hosting Setup</h4>
+      <p>I'll buy your domain, set up hosting, and deploy your site live. You just give me the details.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹1,499</span>
+        <button class="instant-btn" onclick="openModal('Domain + Hosting Setup','₹1,499')">Buy now</button>
+      </div>
+    </div>
+    <div class="instant-card">
+      <span class="instant-icon">🛒</span>
+      <h4>Business Template</h4>
+      <p>Multi-section small business template with services, testimonials, and contact. Instant zip delivery.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹899</span>
+        <button class="instant-btn" onclick="openModal('Business Template','₹899')">Buy now</button>
+      </div>
+    </div>
+    <div class="instant-card">
+      <span class="instant-icon">🔧</span>
+      <h4>Website Speed Fix</h4>
+      <p>I'll audit your existing site and fix performance issues. Faster load time, better Google ranking.</p>
+      <div class="instant-price">
+        <span class="instant-amount">₹2,499</span>
+        <button class="instant-btn" onclick="openModal('Website Speed Fix','₹2,499')">Buy now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="s-label">Services</p>
+  <h2 class="s-title">What I build</h2>
+  <p class="s-sub">For projects that need a custom conversation first — not a pre-built package.</p>
+  <div class="services-list">
+    <div class="svc-card"><div class="svc-num">01</div><span class="svc-icon">🏪</span><h3>Business Website</h3><p>Multi-page site for your shop, brand, or service. SEO-optimized, mobile-first, built to convert visitors into customers.</p><span class="svc-tag">Custom quote</span></div>
+    <div class="svc-card"><div class="svc-num">02</div><span class="svc-icon">🛒</span><h3>E-Commerce Store</h3><p>Full online store with product listings, cart, and Razorpay/PayPal integration. Built to sell and easy to manage.</p><span class="svc-tag">From ₹12,000</span></div>
+    <div class="svc-card"><div class="svc-num">03</div><span class="svc-icon">💬</span><h3>Web Application</h3><p>Custom full-stack app — user auth, dashboard, real-time features, APIs. Built on React + Node + MongoDB.</p><span class="svc-tag">Custom quote</span></div>
+    <div class="svc-card"><div class="svc-num">04</div><span class="svc-icon">🔧</span><h3>Redesign & Revamp</h3><p>Your existing site looks dated or loads slowly? I'll modernize it — new design, better performance, same content.</p><span class="svc-tag">From ₹3,000</span></div>
+    <div class="svc-card"><div class="svc-num">05</div><span class="svc-icon">📊</span><h3>Portfolio / Personal Site</h3><p>Stand-out personal site for developers, designers, freelancers. Built fast, looks sharp, easy to update.</p><span class="svc-tag">From ₹2,000</span></div>
+    <div class="svc-card"><div class="svc-num">06</div><span class="svc-icon">🤖</span><h3>AI-Powered Features</h3><p>Add AI to your site — chatbots, content generation, smart search. Certified in Oracle OCI Generative AI.</p><span class="svc-tag">Custom quote</span></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <p class="s-label">Portfolio</p>
+  <h2 class="s-title">Projects I've built</h2>
+  <p class="s-sub">Real projects, real code. Not design mockups that never shipped.</p>
+  <div class="work-grid">
+    <div class="work-card"><div class="work-thumb t1">🍕</div><div class="work-body"><div class="work-tags"><span class="work-tag">React</span><span class="work-tag">Node.js</span><span class="work-tag">MongoDB</span><span class="work-tag">Express</span></div><h3>Food Delivery App</h3><p>Full-stack platform with real-time order tracking, restaurant listings, cart management, and payment flow.</p></div></div>
+    <div class="work-card"><div class="work-thumb t2">💬</div><div class="work-body"><div class="work-tags"><span class="work-tag">React</span><span class="work-tag">Socket.io</span><span class="work-tag">Node.js</span><span class="work-tag">MongoDB</span></div><h3>QuickChat App</h3><p>Real-time chat with user authentication, multiple rooms, message history, and live presence indicators.</p></div></div>
+    <div class="work-card"><div class="work-thumb t3">🌐</div><div class="work-body"><div class="work-tags"><span class="work-tag">MERN</span><span class="work-tag">Tailwind</span><span class="work-tag">REST API</span></div><h3>Your project here</h3><p>Actively taking new clients. Reach out with your idea and let's add your project to this list.</p></div></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <p class="s-label">Why work with me</p>
+  <h2 class="s-title">What you're actually getting</h2>
+  <p class="s-sub">Not just a pretty site. A developer who cares about your results.</p>
+  <div class="why-grid">
+    <div class="why-card"><h4>⚡ Fast delivery</h4><p>Most projects ship in 7–14 days. Fastest packages in 48 hours. No waiting for months.</p></div>
+    <div class="why-card"><h4>🧠 Clean, real code</h4><p>Every site is well-structured, fast-loading, and easy to maintain. No bloated plugins, no copy-paste junk.</p></div>
+    <div class="why-card"><h4>📱 Mobile-first always</h4><p>Every site is built for phones first. That's where 70% of your visitors come from.</p></div>
+    <div class="why-card"><h4>💰 No agency markup</h4><p>You work directly with me — no project managers, no overhead. Fair pricing for real work.</p></div>
+    <div class="why-card"><h4>🔄 Revisions included</h4><p>All packages come with revision rounds built in. You'll get exactly what you asked for.</p></div>
+    <div class="why-card"><h4>📞 Direct communication</h4><p>Talk to the developer, not a support bot. Fast replies, honest answers, no runaround.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="s-label">Contact</p>
+  <h2 class="s-title">Have something custom in mind?</h2>
+  <p class="s-sub">Tell me about your project and I'll reply within 24 hours with a plan and quote.</p>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Let's build something together</h3>
+      <p>Don't know exactly what you need yet? That's fine — describe your business and goals and I'll figure out the right approach.</p>
+      <div class="contact-item"><span class="contact-item-icon">✉️</span><div><strong>mohit@buildwithmohit.in</strong><span>Replies within 24 hours</span></div></div>
+      <div class="contact-item"><span class="contact-item-icon">📍</span><div><strong>India</strong><span>Remote work worldwide</span></div></div>
+      <div class="contact-item"><span class="contact-item-icon">💬</span><div><strong>WhatsApp available</strong><span>For quick questions and updates</span></div></div>
+      <div class="contact-item"><span class="contact-item-icon">⏱️</span><div><strong>7–14 day turnaround</strong><span>For most custom projects</span></div></div>
+    </div>
+    <div class="contact-form-wrap">
+      <div class="cf-row">
+        <div class="cf-field"><label>Your name</label><input type="text" id="cf-name" placeholder="Rahul Sharma"></div>
+        <div class="cf-field"><label>Email address</label><input type="email" id="cf-email" placeholder="rahul@business.com"></div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field"><label>Type of project</label>
+          <select id="cf-type">
+            <option value="">Select type</option>
+            <option>Business website</option>
+            <option>Landing page</option>
+            <option>E-Commerce store</option>
+            <option>Web application</option>
+            <option>Portfolio / Resume</option>
+            <option>Website redesign</option>
+            <option>AI-powered feature</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="cf-field"><label>Budget range</label>
+          <select id="cf-budget">
+            <option value="">Select budget</option>
+            <option>Under ₹5,000</option>
+            <option>₹5,000 – ₹15,000</option>
+            <option>₹15,000 – ₹30,000</option>
+            <option>₹30,000+</option>
+            <option>Let's discuss</option>
+          </select>
+        </div>
+      </div>
+      <div class="cf-field"><label>Tell me about your project</label><textarea id="cf-msg" placeholder="What does your business do? What do you need the website to achieve? Any reference sites you like?"></textarea></div>
+      <button class="cf-submit" onclick="submitContact()">Send message →</button>
+      <div class="cf-success" id="cf-success">✓ Received! I'll get back to you within 24 hours with a quote.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span>BuildWithMohit<span>.in</span></div>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <a href="#">Instagram</a>
+      <a href="#store">Store</a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2025 BuildWithMohit.in · All rights reserved</div>
+</footer>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal">
+    <div class="modal-header" id="modalHeader">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="modalTitle">Complete Purchase</h3>
+      <p id="modalSubtitle">Fill in your details to proceed to payment</p>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-price-row">
+        <span class="modal-price-label">Total amount</span>
+        <span class="modal-price-amount" id="modalAmount">₹3,999</span>
+      </div>
+      <div class="form-field"><label>Your full name</label><input type="text" id="m-name" placeholder="Rahul Sharma"></div>
+      <div class="form-field"><label>Email address</label><input type="email" id="m-email" placeholder="rahul@business.com"></div>
+      <div class="form-field"><label>Phone number (optional)</label><input type="tel" id="m-phone" placeholder="+91 98765 43210"></div>
+      <div class="form-field"><label>Project requirements (brief)</label><textarea id="m-req" placeholder="Describe what you need — business name, niche, pages, color preferences..."></textarea></div>
+      <div class="payment-methods">
+        <label>Choose payment method</label>
+        <div class="pay-options">
+          <div class="pay-option selected" id="pay-razorpay" onclick="selectPay('razorpay')">
+            <div class="pay-icon">🇮🇳</div>
+            <span class="pay-option-name">Razorpay</span>
+            <span class="pay-option-sub">UPI · Cards · Net banking</span>
+          </div>
+          <div class="pay-option" id="pay-paypal" onclick="selectPay('paypal')">
+            <div class="pay-icon">🌍</div>
+            <span class="pay-option-name">PayPal</span>
+            <span class="pay-option-sub">International · Cards</span>
+          </div>
+        </div>
+      </div>
+      <button class="modal-pay-btn" onclick="processPayment()">🔒 Proceed to payment</button>
+      <p class="secure-note">🔒 Secure checkout · You'll receive a confirmation email</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <span class="success-icon">✅</span>
+      <h3>Order received!</h3>
+      <p>Thank you for your purchase. I've received your order and will reach out to <strong id="success-email"></strong> within <strong>24 hours</strong> to confirm details and begin work.</p>
+      <button class="btn-orange" style="margin:1.5rem auto 0;font-size:0.88rem;" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let selectedPay = 'razorpay';
+function openModal(title, amount) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSubtitle').textContent = 'Fill in your details to proceed to payment';
+  document.getElementById('modalAmount').textContent = amount;
+  document.getElementById('modalBody').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('modalHeader').style.display = 'block';
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function selectPay(method) {
+  selectedPay = method;
+  document.getElementById('pay-razorpay').classList.toggle('selected', method === 'razorpay');
+  document.getElementById('pay-paypal').classList.toggle('selected', method === 'paypal');
+}
+const FORMSPREE = 'https://formspree.io/f/meevglay';
+
+async function processPayment() {
+  const name = document.getElementById('m-name').value.trim();
+  const email = document.getElementById('m-email').value.trim();
+  const phone = document.getElementById('m-phone').value.trim();
+  const req = document.getElementById('m-req').value.trim();
+  if (!name || !email) { alert('Please enter your name and email to continue.'); return; }
+  if (!email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  const btn = document.querySelector('.modal-pay-btn');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: '🛒 New Order — ' + document.getElementById('modalTitle').textContent,
+        name, email, phone,
+        package: document.getElementById('modalTitle').textContent,
+        amount: document.getElementById('modalAmount').textContent,
+        payment_method: selectedPay,
+        requirements: req || 'Not provided'
+      })
+    });
+  } catch(e) {}
+  document.getElementById('success-email').textContent = email;
+  document.getElementById('modalBody').style.display = 'none';
+  document.getElementById('modalHeader').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = 'block';
+}
+
+async function submitContact() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const type = document.getElementById('cf-type').value;
+  const budget = document.getElementById('cf-budget').value;
+  const msg = document.getElementById('cf-msg').value.trim();
+  if (!name || !email || !msg) { alert('Please fill in your name, email, and project details.'); return; }
+  const btn = document.querySelector('.cf-submit');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: '📩 New Project Enquiry from ' + name,
+        name, email,
+        project_type: type || 'Not specified',
+        budget: budget || 'Not specified',
+        message: msg
+      })
+    });
+  } catch(e) {}
+  btn.style.display = 'none';
+  document.getElementById('cf-success').style.display = 'block';
+}
+document.getElementById('payModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
